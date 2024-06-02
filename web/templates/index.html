@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Image Uploader</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="/index" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <button type="submit" name="submit">Upload</button>
+        </form>
+    </div>
+    <h2>Your File: {{ file }}</h2>
+    <p>Prediction: {{ prediction }}</p> <!-- Display the prediction -->
+</body>
+
+</html>
