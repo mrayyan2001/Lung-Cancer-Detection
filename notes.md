@@ -23,7 +23,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 13. Evaluate the model
 14. Save the model
 
-- filters 
+- filters
 - handle imbalanced data (undersampling)
 - X,y
 - X_train, X_test, y_train, y_test
@@ -32,7 +32,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 ## We should also consider the following points
 
 1. Compare the our results with other papers.
-2. Use different models, parameters, optimizers, and loss functions, and compare the results.
+2. Use different models, parameters, optimizers, and loss functions, and compare the results. -> hyperparameter tuning
 3. The dataset is imbalanced, so we should use techniques to handle this issue like augmentation, sampling, and so on.
 4. See the best filters for the biomedical images.
 5. Focus on error when the model predicts the case as normal but it is malignant or benign.
