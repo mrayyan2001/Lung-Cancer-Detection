@@ -1,7 +1,5 @@
 # Lung Cancer Detection using Deep Learning
 
-## Resources
-
 1. Loading the images:
    1. Youtube Video [Loading in your own data - Deep Learning basics with Python, TensorFlow and Keras p.2](https://www.youtube.com/watch?v=j-3vuBynnOE)
    2. Stack overflow [Loading all images using imread from a given folder](https://stackoverflow.com/questions/30230592/loading-all-images-using-imread-from-a-given-folder)
@@ -10,3 +8,7 @@
    The dataset contains a total of 1190 images representing CT scan slices of 110 cases. These cases are grouped into three classes: normal, benign, and malignant. of these, 40 cases are diagnosed as malignant; 15 cases diagnosed with benign; and 55 cases classified as normal cases.
 4. We have used the following websites for visualizing the model: [Netron](https://netron.app/) and [NN-SVG](https://alexlenail.me/NN-SVG/AlexNet.html)
 5. [How to pass strings from HTML to Python and back to HTML](https://stackoverflow.com/questions/61846304/how-to-pass-strings-from-html-to-python-and-back-to-html)
+6. [How to Grid Search Hyperparameters for Deep Learning Models in Python with Keras](https://machinelearningmastery.com/grid-search-hyperparameters-deep-learning-models-python-keras/)
+7. We run the model on Kaggle for faster computation. It provides us with 29 GB of RAM, 4 CPU cores, and 16 GB of GPU. [Kaggle](https://www.kaggle.com/) **It's free with time limitation**
+8. We learned everything through the internship at [Electro Pi](https://electropi.ai/) (10,000 Arabian AI Developers Initiative).
+9. We used version control system [Git](https://git-scm.com/) and [GitHub](https://github.com/mrayyan2001/Project-2) to manage our project.
