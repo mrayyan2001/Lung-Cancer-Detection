@@ -6,8 +6,8 @@ from PIL import Image
 
 app = Flask(__name__)
 
-model = load_model("./lung_cancer_model.h5")
-cat = np.array(["Bengin cases", "Malignant cases", "Normal cases"])
+model = load_model("C:/Users/mmria\Desktop/Project 2/web/lung_cancer_final_model.h5")
+cat = np.array(["Malignant cases", "Non-Malignant cases"])
 
 
 def preprocessing(img):
@@ -21,7 +21,8 @@ def preprocessing(img):
 def get_prediction(img):
     img = preprocessing(img)
     predict = model.predict(img)
-    return f"{cat[predict.argmax()]}, {predict.max()*100:0.3f}%"
+    #
+    return f"{cat[np.round(predict).astype(int)]}, {(predict.max() if predict.max() > 0.5 else 1 - predict.max()) * 100:0.3f}%"
 
 
 @app.route("/")
