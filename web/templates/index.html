@@ -1,20 +1,374 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Image Uploader</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- Favicons -->
+<link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+<link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+
+    <title>Lung Cancer</title>
+
+
+
 </head>
 
 <body>
-    <div class="container">
-        <form action="/index" method="POST" enctype="multipart/form-data">
-            <input type="file" name="file">
-            <button type="submit" name="submit">Upload</button>
-        </form>
+    <!-- ======= Top Bar ======= -->
+    <div id="topbar" class="d-flex align-items-center fixed-top">
+        <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+            <div class="align-items-center d-none d-md-flex">
+                <i class="bi bi-clock"></i>Available 24/7
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="bi bi-phone"></i> Call us now +1 5589 55488 55
+            </div>
+        </div>
     </div>
-    <h2>Your File: {{ file }}</h2>
-    <p>Prediction: {{ prediction }}</p> <!-- Display the prediction -->
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <a href="index.html" class="logo me-auto"><img src="{{ url_for('static', filename='img/i.png') }}" 
+              alt="" ></a>
+        
+
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a class="nav-link scrollto " href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto" href="#about">About</a></li>
+                    <li><a class="nav-link scrollto" href="#featured-services">Features</a></li>
+
+                    <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
+               
+                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+            <a href="{{ url_for('login') }}" class="login-btn scrollto">Login</a>
+
+
+        </div>
+    </header><!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
+        <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+            <div class="carousel-inner" role="listbox">
+
+                <!-- Slide 1 -->
+                {% set image_url = url_for('static', filename='img/lung18.jpg') %}
+                <div class="carousel-item active" style="background-image: url('{{ image_url }}');">
+                
+                  <div class="container">
+                    <h2>Welcome to <span>Lung Cancer Prediction</span></h2>
+                    <p>Learn about lung cancer, its risk factors, symptoms, prevention, and treatment. Early detection is key to improving survival rates. Explore our resources to understand how you can reduce your risk and detect lung cancer in its early stages.</p>
+                    <a href="#about" class="btn-get-started scrollto">Read More</a>
+                </div>
+                
+                </div>
+
+                <!-- Slide 2 -->
+             
+                  {% set image_url = url_for('static', filename='img/lung111.jpg') %}
+                <div class="carousel-item active" style="background-image: url('{{ image_url }}');">
+                  <div class="container">
+                    <h2>Welcome to <span>Lung Cancer Prediction</span></h2>
+                    <p>Learn about lung cancer, its risk factors, symptoms, prevention, and treatment. Early detection is key to improving survival rates. Explore our resources to understand how you can reduce your risk and detect lung cancer in its early stages.</p>
+                    <a href="#about" class="btn-get-started scrollto">Read More</a>
+                </div>
+                
+                </div>
+
+             
+
+            </div>
+
+            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+            </a>
+
+            <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+            </a>
+
+        </div>
+    </section><!-- End Hero -->
+    
+   
+       <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="section-title">
+            <h2>About Us</h2>
+            <p>Our mission is to provide advanced technology for early detection of lung cancer through image analysis. We are dedicated to saving lives by leveraging artificial intelligence and medical expertise.</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-6" data-aos="fade-right">
+                <img src="{{ url_for('static', filename='img/lung2.jpg') }}" class="img-fluid" alt="Lung Cancer Detection">
+            </div>
+            <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
+                <h3>Empowering Patients with Early Detection</h3>
+                <p class="fst-italic">We believe deep  in the power of early detection to save lives. Our advanced image analysis technology can identify potential signs of lung cancer from medical images, providing patients and healthcare professionals with valuable information.</p>
+                <ul>
+                    <li><i class="bi bi-check-circle"></i> Accurate and reliable predictions through AI-driven analysis.</li>
+                    <li><i class="bi bi-check-circle"></i> Recognize abnormalities quickly and seek medical attention immediately.</li>
+                    <li><i class="bi bi-check-circle"></i> Collaborative approach with medical professionals to improve patient outcomes.</li>
+                </ul>
+                <p>By leveraging the latest advances in artificial intelligence, our goal is to enable everyone to detect lung cancer early, leading to better prognosis and a higher quality of life.</p>
+            </div>
+        </div>
+        
+  
+        </div>
+      </section><!-- End About Us Section -->
+       <!-- ======= Featured Services Section ======= -->
+    <section id="featured-services" class="featured-services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="fa-solid fa-x-ray"></i></div>
+              <h4 class="title"><a href="">X-ray Image Analysis</a></h4>
+              <p class="description">Use our advanced system to analyze X-ray images and detect early signs of lung cancer using AI techniques.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon"><i class="fa-solid fa-file-shield"></i></div>
+              <h4 class="title"><a href="">Data Privacy and Security</a></h4>
+              <p class="description">We ensure the protection and privacy of your medical data using the latest security and encryption standards.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+              <div class="icon"><i class="fa-solid fa-gears"></i></div>
+              <h4 class="title"><a href="">Continuous Technical Support</a></h4>
+              <p class="description">Our team is available around the clock to provide technical support and answer your questions.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+              <div class="icon"><i class="fa-solid fa-mobile"></i></i></div>
+              <h4 class="title"><a href="">Mobile Applications</a></h4>
+              <p class="description">Download our mobile app to quickly and easily access our services from anywhere at any time.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Featured Services Section -->
+    <section id="cta" class="cta">
+      <div class="container" data-aos="zoom-in">
+    
+        <div class="text-center">
+          <h3>Concerned About Lung Health? Get Help Now!</h3>
+          <p>Early detection of lung cancer can save lives. Use our advanced AI system to analyze your X-ray images and receive detailed reports and recommendations. Take control of your health today.</p>
+          <a class="cta-btn scrollto" href="{{ url_for('login') }}"> Log in to upload Your X-Ray Images</a>
+        </div>
+    
+      </div>
+    </section>
+     
+      <!-- ======= Frequently Asked Questions Section ======= -->
+<section id="faq" class="faq section-bg">
+    <div class="container" data-aos="fade-up">
+  
+      <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to the most common questions about our lung cancer prediction system and how it can help you.</p>
+      </div>
+  
+      <ul class="faq-list">
+  
+        <li>
+          <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">How does the lung cancer prediction system work? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+          <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+            <p>
+              Our system uses advanced AI algorithms to analyze X-ray images for early signs of lung cancer. The AI model has been trained on a large dataset of medical images to detect abnormalities with high accuracy.
+            </p>
+          </div>
+        </li>
+  
+        <li>
+          <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Is the analysis by your system reliable? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+          <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+            <p>
+              Yes, our system has been rigorously tested and validated against medical standards. It provides highly reliable results, but we always recommend following up with a healthcare professional for a comprehensive diagnosis.
+            </p>
+          </div>
+        </li>
+  
+        <li>
+          <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">How do I upload my X-ray images? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+          <div id="faq3" class="collapse" data-bs-parent=".faq-list">
+            <p>
+              You can upload your X-ray images through our secure online portal. Simply click on the "Upload X-Ray Images" button, and follow the instructions to select and upload your files.
+            </p>
+          </div>
+        </li>
+  
+        <li>
+          <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Is my data safe with your system? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+          <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+            <p>
+              Absolutely. We prioritize your privacy and use advanced encryption and security protocols to protect your data. Your medical images and personal information are kept confidential.
+            </p>
+          </div>
+        </li>
+  
+        <li>
+          <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">How quickly will I receive my results? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+          <div id="faq5" class="collapse" data-bs-parent=".faq-list">
+            <p>
+              Our system typically processes and analyzes images within a few minutes. You will receive your results shortly after uploading your images, along with a detailed report.
+            </p>
+          </div>
+        </li>
+  
+        <li>
+          <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">Can I consult with a doctor after receiving my results? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+          <div id="faq6" class="collapse" data-bs-parent=".faq-list">
+            <p>
+              Yes, we offer options for remote consultations with medical professionals. After receiving your results, you can schedule an online appointment to discuss your report and next steps.
+            </p>
+          </div>
+        </li>
+  
+      </ul>
+  
+    </div>
+  </section><!-- End Frequently Asked Questions Section -->
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+    <div class="container">
+  
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>If you have any questions or need further information, please feel free to contact us. We're here to help!</p>
+      </div>
+  
+    </div>
+  
+    <div>
+      <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3385.2583763151115!2d35.906569315151245!3d31.953949681232845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151b595d0124ec2d%3A0x9e1d856a61626f3f!2sAmman%2C%20Jordan!5e0!3m2!1sen!2sjo!4v1623312519872!5m2!1sen!2sjo" frameborder="0" allowfullscreen></iframe>
+    </div>
+  
+    <div class="container">
+  
+      <div class="row mt-5">
+  
+        <div class="col-lg-6">
+  
+          <div class="row">
+            <div class="col-md-12">
+              <div class="info-box">
+                <i class="bx bx-map"></i>
+                <h3>Our Address</h3>
+                <p>Amman, Jordan</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-box mt-4">
+                <i class="bx bx-envelope"></i>
+                <h3>Email Us</h3>
+                <p>rudaina@gmail.com<br>heba@gmail.com<br>mohammad@gmail.com</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-box mt-4">
+                <i class="bx bx-phone-call"></i>
+                <h3>Call Us</h3>
+                <p>+962 6 1234 567<br>+962 7 9876 5432</p>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+  
+        <div class="col-lg-6">
+          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="message" rows="7" placeholder="Message" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+        </div>
+  
+      </div>
+  
+    </div>
+  </section><!-- End Contact Section -->
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+   
+
+    <div class="container">
+      <div class="copyright">
+        &copy; 2024 <strong><span>Lung Cancer</span></strong>. All Rights Reserved
+      </div>
+      
+    </div>
+  </footer><!-- End Footer -->
+    
+  
+      
+  
+<!-- Vendor JS Files -->
+<script src="{{ url_for('static', filename='vendor/purecounter/purecounter_vanilla.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/php-email-form/validate.js') }}"></script>
+
+<!-- Template Main JS File -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
 </body>
 
 </html>

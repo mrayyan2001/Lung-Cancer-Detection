@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+    <link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+    <title>Result</title>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div id="topbar" class="d-flex align-items-center fixed-top">
+        <div class="container d-flex align-items-center justify-content-center justify-content-md-between">
+            <div class="align-items-center d-none d-md-flex">
+                <i class="bi bi-clock"></i>Available 24/7
+            </div>
+            <div class="d-flex align-items-center">
+                <i class="bi bi-phone"></i> Call us now +1 5589 55488 55
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+            <a href="{{ url_for('index') }}" class="logo me-auto"><img src="{{ url_for('static', filename='img/i.png') }}" alt="Logo"></a>
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a class="nav-link scrollto" href="{{ url_for('index') }}#hero">Home</a></li>
+                    <li><a class="nav-link scrollto" href="{{ url_for('index') }}#about">About</a></li>
+                    <li><a class="nav-link scrollto" href="{{ url_for('index') }}#featured-services">Features</a></li>
+                    <li><a class="nav-link scrollto" href="{{ url_for('index') }}#faq">FAQ</a></li>
+                    <li><a class="nav-link scrollto" href="{{ url_for('index') }}#contact">Contact</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <a href="{{ url_for('index') }}" class="login-btn scrollto">Logout</a>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <section class="text-center" style="margin-top:160px;">
+        <div class="card mx-4 mx-md-5 shadow-5-strong bg-body-tertiary" style="margin-top: -100px; backdrop-filter: blur(30px);">
+            <div class="card-body py-5 px-md-5">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="fw-bold mb-3 mt-5">Lung Cancer Detection</h2>
+                        <h4 class="fw-bold mb-5">Preview</h4>
+                        <form action="{{ url_for('result2') }}" method="post" enctype="multipart/form-data">
+                            <input type="file" class="form-control mb-3" id="customFile" name="file" accept="image/*" onchange="previewImage(event)">
+                            <img id="uploadedImage" src="#" alt="Your image" class="img-fluid mb-3" style="display: none;"/>
+                            <button type="submit" class="btn btn-primary btn-block mb-5" id="submitButton">Submit</button>
+                        </form>
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        {% if prediction %}
+                            <h4 class="fw-bold mb-5">Result:</h4>
+                            <div id="result-container" class="result-container">
+                                <p>{{ prediction }}</p>
+                                <img src="{{ url_for('static', filename='uploads/' ~ original_image) }}" alt="Original image" class="img-fluid mb-3"/>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" style="margin-top: 50px;">
+        <div class="container">
+            <div class="copyright">
+                &copy; 2024 <strong><span>Lung Cancer</span></strong>. All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vendor JS Files -->
+    <script src="{{ url_for('static', filename='vendor/purecounter/purecounter_vanilla.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                var output = document.getElementById('uploadedImage');
+                output.src = reader.result;
+                output.style.display = 'block';
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</body>
+</html>
