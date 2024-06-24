@@ -23,7 +23,7 @@ app.config["UPLOAD_FOLDER"] = "web/static/uploads"
 db = SQLAlchemy(app)
 
 
-model = load_model("web\lung_cancer_final_model.h5")
+model = load_model("C:/Users/mmria/Desktop/Project 2/web/lung_cancer_final_model.h5")
 cat = np.array(["Malignant cases", "Non-Malignant cases"])
 
 
